@@ -19,8 +19,6 @@ if (isNaN(input) || !Number.isInteger(input)) {
 else {
   // iterate from 1 to the value of input
   for (let i = 1; i <= input; i++) {
-    
-    //TODO provide for tests for divisible for 3,5, and 15 to create desired output
     if (i % 15 == 0) {
       console.log(`${i} fizzbuzz`);
     } else if (i % 3 == 0 ) {
