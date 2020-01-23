@@ -1,9 +1,9 @@
 //TODO fill in comment template
 /*
-Description:
-Input:
-Output:
-Usage: 
+Description: Program that takes a string as input and counts how many of each character are in that string
+Input: String
+Output: String separated by character with a character count next to each character
+Usage: node 5-character-count <string>
 */
 
 // get input using getargs
@@ -12,26 +12,35 @@ let input = getargs.getStringArg()
 
 
 //test that it is a string
-//TODO check for string argument and if no string is entered provide a usage statement and quit
-if ( ) {
-  // TODO provide a usage statement
+if (!input) {
+  console.log('node 5-character-count <string>');
 }
 else {
-  // TODO initialize charCount object to count characters
-  // TODO turn the input into an array called characters using the split method
-  
-  // TODO iterate through array to create object that has character for key and count for value
-  
-  // TODO initialize a new array called charArr
-  // TODO loop through every character in charCount 
-  for ( ) {
-    let newElem = {char:character, count:charCount[character]};
-    // TODO add newElem to charArr using the push method
+  let charCount = {};
+  let characters = input.split('');
+
+  // for (let i = 0; i < characters.length; i++); same as below
+  for (let character of characters) {
+    if (charCount[character]) {
+      charCount[character]++;
+    }
+    else {
+      charCount[character] = 1;
+    }
   }
 
-  // TODO use the sort method of charArr with a custom compare function to sort the array by the count values (least to greatest)
+  let charArr = [];
+  for (let character in charCount) {
+    let newElem = {char: character, count: charCount[character]};
+    charArr.push(newElem);
+  }
 
-  // TODO output the content of the array to the console, showing each character and the count
-  
+  charArr.sort(function (a, b) {
+    return a.count - b.count;
+  })
+
+  for (let i = 0; i < charArr.length; i++) {
+    console.log(`${charArr[i].char}: ${charArr[i].count}`);
+  }
 }
 
